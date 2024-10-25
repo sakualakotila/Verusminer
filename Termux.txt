@@ -1,0 +1,54 @@
+
+
+DO LIKE CAVEMAN OR ADB SCRCPY
+
+	1. Install termux
+https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk
+
+	2. Setup ssh, run these commands
+pkg upgrade -y
+pkg install openssh -y
+passwd
+whoami
+sshd
+ifconfig
+
+	3. Connect to ssh with pc
+
+
+DO REST ON SSH (or like caveman)
+
+
+	2. Setup startup commands
+first:
+cd ~
+nano .bashrc
+
+add:
+RED='\033[0;31m'
+NC='\033[0m'
+termux-wake-lock
+sshd
+echo -e "${RED}wake-lock enabled, ssh started, ccminer started${NC}"
+./ccminer/start.sh
+
+
+	4. Set these commands in termux & Edit config
+pkg update -y && pkg upgrade -y
+pkg install libjansson wget nano -y
+mkdir ccminer && cd ccminer
+wget https://raw.githubusercontent.com/Darktron/pre-compiled/main/ccminer
+wget https://raw.githubusercontent.com/sakualakotila/Verusminer/main/config.json
+wget https://raw.githubusercontent.com/Darktron/pre-compiled/main/start.sh
+chmod +x ccminer start.sh
+nano config.json
+
+	5. Off you go
+~/ccminer/start.sh
+
+
+
+
+
+
+
